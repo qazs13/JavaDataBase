@@ -160,15 +160,12 @@ public class DataBase {
             connection = db.connect();
             if (command.equals("next"))
             {
-                id+=1;
-                preparedStatment = connection.prepareStatement("SELECT * FROM userdata WHERE id = ? AND ? <= (SELECT COUNT(id) from userdata) LIMIT 1");
+                preparedStatment = connection.prepareStatement("SELECT * FROM userdata WHERE id > ?  LIMIT 1");
             }else
             {
-                id-=1;
-                preparedStatment = connection.prepareStatement("SELECT * FROM userdata WHERE id = ? AND ? >= 1 LIMIT 1");
+                preparedStatment = connection.prepareStatement("SELECT * FROM userdata WHERE id < ? ORDER BY id DESC LIMIT 1");
             }
             preparedStatment.setInt(1, id);
-            preparedStatment.setInt(2, id);
             result = preparedStatment.executeQuery();
             while (result.next())
             {
