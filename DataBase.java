@@ -72,6 +72,7 @@ public class DataBase {
         }
         finally
         {
+            System.out.println("Get Firs Or Last");
             return userData;
         }
     }
@@ -185,7 +186,7 @@ public class DataBase {
         }
         finally
         {
-            System.out.println("Next Node !");
+            System.out.println("Next Or Previous Node !");
             return userData;
         }
     }
